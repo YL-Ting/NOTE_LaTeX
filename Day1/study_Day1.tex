@@ -1,0 +1,194 @@
+% Preamble - to set up the global setting of the file
+
+% to set type of this file ex:beamer(like PPT), article(paper)...
+% can use optional [] to default the font size,10pt,11pt,12pt is most use
+\documentclass[10pt]{article}
+
+% what package you use,the [] is optional setting
+\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx,ulem}
+
+% to set the length of tab before a paragraph
+\setlength{\parindent}{1cm}
+\author{YL TING}
+\date{\today}
+\title{Learning LaTex - Day1}
+
+% Document itself
+\begin{document}
+    \maketitle
+    % insert photo
+    \begin{center}
+        \includegraphics[width=0.3\linewidth]{test_photo.png}
+    \end{center}
+
+    \newpage
+    
+    % font size
+    \begin{center}
+        {\LARGE Font Size}\\[0.25cm]
+        {\tiny tiny}\\
+        {\scriptsize scriptsize}\\
+        {\footnotesize footnotesize}\\
+        {\normalsize normalsize}\\
+        {\large large}\\
+        {\LARGE LARGE}\\
+        {\huge huge}\\
+        {\Huge Huge}\\[1cm]
+    \end{center}
+
+    \begin{center}
+        {\LARGE Font Style}\\[0.25cm]
+        Normal text\\[0.2cm]
+        \textbf{Bold text} \\[0.2cm]
+        \textit{Italic text}\\[0.2cm]
+        \underline{Underlined text}\\[0.2cm]
+        \emph{emphasis text}\\[0.2cm]
+        \emph{\emph{double emphasis text}}\\[0.2cm]
+        % below should use ulem package
+        \uline{underlined text but will not over the block margin,useful for long underlined string}\\
+        \uuline{Double underlined text}\\[0.2cm]
+        \uwave{Wavy underlined text}\newline %\newline can not use []
+    \end{center}
+
+    % math mode
+    % Display Style Math - Puts math on center of display
+    \begin{center}
+        {\LARGE Display Style Math}\\
+    \end{center}
+    %   type 1
+    \[f(x) = (x+2)^2 - 9\]
+    %   type 2-1
+    %       - the & is use to align the math expression
+    %       - the * back of align can cancel the number of fuction
+    %         or use \nonumber (only use on the end of line)
+    \begin{align}
+        f(x) & = a_2 x^{ky} + a_1 x +a_0 \nonumber \\
+             & = x^2 + 4x - 5
+    \end{align}
+    %   type 2-2 
+    \begin{align*}
+        2x+1 & = 9 & 3y-2 & = -5 & -5z-8 & = 3 \\
+        2x & = 8 & 3y & = -3 & -5z & = -5 \\
+        x &= 4 & y &= -1 & z &= -1
+    \end{align*}
+
+    % Inline or Text Style Math - math stays in line
+    \begin{center}
+        {\LARGE Inline or Text Style Math}\\
+    \end{center}
+    %   type 1 - enclose to pair of $
+    Inline equation example $f(x) = x^2 +4x -5$ test test. \\
+    %   type 2 - enclose to \( \)
+    Inline equation example \(f(x) = x^2 +4x -5\) test test. \\
+
+    % - some equation in two mode have different style
+    \begin{center}
+        {\LARGE some equation in two mode have different notaion}\\
+        \begin{align*}
+            Display Style Math
+            \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+        \end{align*}
+        Inline or Text Style Math
+        \(\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}\)
+    \end{center}
+    % - Force display style math in inline mode: \( \displaystyle ...\)
+    % - Force inline math in display mode: \[ \ textstyle ...\]
+
+
+    \begin{center}
+        {\LARGE Basic Math Notation\\ Arithmetic \\}
+        \(1+1\)\\
+        \(5-3\)\\
+        \(6 \cdot 4\) \\
+        \(6 \times 4\) \\
+        \(27 \div 9 \) \\ %\newpage
+        {\LARGE Fractions \\}
+        \[\frac{numerator}{denominator}\]\\
+        % Force Display style
+        \[\dfrac{numerator}{denominator}\]\\
+        % Force Inline
+        \[\tfrac{numerator}{denominator}\]\\
+    \end{center}
+
+
+    \begin{center}
+        {\LARGE Superscript and Subscript}\\[0.5cm]
+        \emph{\Large{Use of Brackets for Grouping}}\\[1cm]
+        with Brackets: \(e^{kx}\)\\[0.25cm]
+        without Brackets: \(e^kx\)\\[1cm]
+        \emph{\Large{Simutaneous Superscript and Subscript}}\\[0.5cm]
+        a sub-1 squared: \(a_1^2\)\\[0.25cm]
+        a squared sub-1: \(a^2_1\)\\[1cm]
+        \emph{\Large{Combined Superscripts and Subscripts}}\\[0.5cm]
+        Stacked: \(p_1^{a_1}\)\\[0.25cm]
+        Offset: \({p_1}^{a_1}\)\newpage
+    \end{center}
+
+
+    \begin{center}
+        {\LARGE Parentheses}\\[0.5cm]
+        % type 1
+        ( a )\\[0.25cm]
+        % type 2
+        \big( a \big)\\[0.25cm]
+        % type 3
+        \Big( a \Big)\\[0.25cm]
+        % type 4
+        \bigg( a \bigg)\\[0.25cm]
+        % type 5
+        \Bigg( a \Bigg)\\[0.25cm]
+        % type 6 - \left and \right can  use only one side,just use blank symbol after \left or \right
+        \[ \left( \frac{numerator}{denominator} \right) \]
+    \end{center}
+
+    \begin{center}
+        {\LARGE Text in Math Mode}\\
+        % way 1
+        \[ n = ab \text{ where } a \text{ and } b \text{ are natural numbers} \]\\
+        % way 2
+        \[ n = ab \text{ where \( a \) and \( b \) are natural numbers } \]\\
+    \end{center}
+
+    \begin{center}
+        {\LARGE Greek Letters}
+        \begin{align*}
+            \text{alpha: }& \alpha  A\\
+            \text{beta: }& \beta  B\\
+            \text{gamma: }& \gamma  \Gamma\\
+            \text{delta: }& \delta  \Delta\\
+            \text{epsilon: }& \epsilon  \varepsilon  E\\
+            \text{zeta: }& \zeta  Z\\
+            \text{eta: }& \eta  H\\
+            \text{theta: }& \theta  \vartheta  \Theta\\
+            \text{iota: }& \iota  I\\
+            \text{kappa: }& \kappa  K\\
+            \text{lambda: }& \lambda  \Lambda\\
+            \text{mu: }& \mu  M\\
+            \text{nu: }& \nu  N\\
+            \text{xi: }& \xi  \Xi\\
+            \text{omeicron: }& o  O\\
+            \text{pi: }& \pi  \Pi\\
+            \text{rho: }& \rho \varrho P\\
+            \text{sigma: }& \sigma \Sigma\\
+            \text{tau: }& \tau T\\
+            \text{upsilon: }& \upsilon \Upsilon\\
+            \text{phi: }& \phi \varphi \Phi\\
+            \text{chi: }& \chi X\\
+            \text{psi: }& \psi \Psi\\
+            \text{omega: }& \omega \Omega\\
+        \end{align*}
+    \end{center}
+
+    \begin{center}
+        {\LARGE AMS Blackboard Font}
+        \begin{align*}
+            \text{Natual Number: }& \mathbb{N}\\
+            \text{Integer: }& \mathbb{Z}\\
+            \text{Rational Number: }& \mathbb{Q}\\
+            \text{Real Number: }& \mathbb{R}\\
+            \text{Complex Number: }& \mathbb{C}\\
+        \end{align*}
+    \end{center}
+\end{document}

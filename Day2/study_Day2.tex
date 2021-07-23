@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hhline} %to make table beauty
+% more useful table package : booktabs,colortbl,tabularx,longtable
+\usepackage{mathdots} %can use more different dots
+\usepackage{multirow} % can merge rows
+
+\author{YL-TING}
+\title{Learning LaTeX - Day2}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \newpage
+    \begin{center}
+        {\LARGE Table and Array}\\[15pt]
+        % in LaTex ,use table or tabular environment to create table
+        % use array environment to create array
+
+        {\LARGE Table}\\[5pt]
+        \begin{tabular}{lcr} 
+            % lcr mean this table has 3 columns
+            % left justified for 1st col , center justified for 2nd col , right justified for 3rd col
+            % use & to align the content
+            % in Latex ,numbers of space will consider to one space
+            text & text & text\\
+            l    & c    & r
+        \end{tabular}\\[15pt]
+
+
+        \begin{tabular}{|lc||r|}
+            % we can use | to make vertical bar between two columns
+            % use \hline to make horizontal bar
+            \hline
+            text \vline & text & text\\
+            l    \vline & c    & r\\
+            \hline \hline
+        \end{tabular}\\[15pt]
+
+        % after use hhline package
+        \begin{tabular}{|cc|c|}
+            11 & 12 & 13 \\
+            \hhline{|-~|=|}
+            21 & 22 & 23
+            
+            %   option of hhline:
+            % = : a double hline the width of a column
+            % - : a single hline the width of a column
+            % ~ : a column with no hline
+            % | : a vline which 'cuts' through a double(or single) hline
+            % : : a vline which is broken by a double hline
+            % # : a double segment between two vlines
+            % t : the top half of a double hline segment
+            % b : the bottom half of a double hline segment
+        \end{tabular}\\[15pt]
+
+        % Merging Columns and Rows
+        \begin{tabular}{|c|c|c|}
+            \hline
+            very long text & very long text & very long text\\
+            \hline
+            \multicolumn{3}{|c|}{Center Merged}\\
+            \hline
+            Text & \multicolumn{2}{|l|}{Left Aligned Merged}\\
+            \hline
+        \end{tabular}\\[15pt]
+
+        % use multirow package to able \multirow
+        \begin{tabular}{|c|c|}
+            \hline
+            % \multirow[valign]{num_rows}{width}{contents}
+            % valign can be t(top),c(center),b(bottom)
+            % width general use *(auto) ,or length (ex:1cm)
+            \multirow{2}{*}{Row Merge} & Text \\
+            & Text \\
+            \hline
+        \end{tabular}\\[10pt]
+
+        % example for merge
+        \begin{tabular}{|c|c||c|c|}
+            \hhline{~~|--}
+            \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{Game}\\
+            \hline
+            Team & Player & 1 & 2\\
+            \hline
+            \multirow{2}{*}{A} & A1 & 2 & 3\\
+            \hhline{|~|---|}
+            & A2 & 0 & 2\\
+            \hhline{|=|=#=|=|}
+            \multirow{2}{*}{B} & B1 & 1 & 0\\
+            \hhline{|~|---|}
+            & B2 & 3 & 1\\
+            \hline
+        \end{tabular}\\[15pt]
+
+        {\LARGE Array}\\[5pt]
+        {\normalsize Array MUST be in math mode}\\[5pt]
+        \begin{align*}
+            \begin{array}{c|cc}
+                a_{11} & a_{12} & a_{13}\\
+                \hline
+                a_{21} & a_{22} & a_{23}\\
+            \end{array}
+        \end{align*}\\[5pt]
+        
+        % Matrix 
+        % type1: can also use \left( and \right) as notation
+        \begin{align*}
+            \left[ \begin{array}{ccc}
+                a_{11} & a_{12} & a_{13}\\
+                a_{21} & a_{22} & a_{23}\\
+            \end{array} \right]
+        \end{align*}\\[5pt]
+        % type2: pmatrix
+        \begin{align*}
+            \begin{pmatrix}
+                a_{11} & a_{12} & a_{13}\\
+                a_{21} & a_{22} & a_{23}\\
+            \end{pmatrix}
+        \end{align*}\\[5pt]
+        % type3: bmatrix
+        \begin{align*}
+            \begin{bmatrix}
+                a_{11} & a_{12} & a_{13} & \cdots\\
+                a_{21} & a_{22} & a_{23} & \cdots\\
+                \vdots & \vdots & \vdots & \ddots\\
+                % only for use mathdots package
+                \iddots & \iddots & \iddots & \iddots
+            \end{bmatrix}
+        \end{align*}\\[5pt]
+    \end{center}
+\end{document}
