@@ -1,0 +1,140 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+% bm present vector by boldface
+\usepackage{bm}
+% esvect present vector by rightarrow
+\usepackage{esvect}
+
+\author{YL-TING}
+\title{Learning LaTeX - Day3}
+\date{\today}
+\begin{document}
+    \maketitle
+    \newpage
+    {\Large Polynomial}
+    \[ f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \]
+
+    {\Large Exponentials}
+    \[ f(x) = c_1 e^{r_1 x} +c_2 e^{r_2 x} \]
+
+    {\Large Special Function}
+    % special fuction
+    \[ \sin(x) \]
+    % without - this consider as a variable
+    \[ sin(x) \]
+    % custom function
+    \[ \operatorname{fun}(x) \]
+    % without - this consider as a variable
+    \[ fun(x) \]
+
+    {\Large Limit}\\
+    \text{Display Style : } \[ \lim_{x \to \infty} \frac{x^2+1}{x^2-1}=1 \]
+    \text{Inline Style : } 
+    \begin{center}
+        \( \lim_{x \to \infty} \frac{x^2+1}{x^2-1}=1 \)\\
+        % force display style in inline mode
+        \( \displaystyle \lim_{x \to \infty} \frac{x^2+1}{x^2-1}=1 \)
+    \end{center}
+    
+    {\Large Summation}\\
+    \text{Display Style : }
+    \[ \sum_{n=1}^{\infty} \frac{1}{n} \]
+    % when n have more than one require,use \substack{} to make multiline
+    \[ \sum_{ \substack{n=0 \\ n \text{ odd}} }^\infty a_{n}x^n \]
+    \text{Inline Style : }
+    \begin{center}
+        \( \sum_{n=1}^{\infty} \frac{1}{n} \)\\[10pt]
+        \( \sum_{ \substack{n=0 \\ n \text{ odd}} }^\infty a_{n}x^n \)
+    \end{center}
+
+    % we define a new command \subalign to solve the multivariable align problem of substack
+    \makeatletter
+    \newcommand{\subalign}[1]{%
+        \vcenter{%
+            \Let@ \restore@math@cr \default@tag
+            \baselineskip\fontdimen10 \scriptfont\tw@
+            \advance\baselineskip\fontdimen12 \scriptfont\tw@
+            \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
+            \lineskiplimit\lineskip
+            \ialign{\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\crcr #1\crcr}%
+        }
+    }
+    \makeatother
+    {\Large subalign vs substack}\\
+    \text{subalign}
+    \[ \sum_{\subalign{n&=0 \\ m&=0}}^\infty \]
+    \text{substack}
+    \[ \sum_{\substack{n=0 \\ m=0}}^\infty \]
+
+
+    \newpage
+
+
+    {\Large Integral } \\[5pt]
+    {\normalsize Single Integral : } \( \int \)\\
+    {\normalsize Double Integral : } \( \iint \)\\
+    {\normalsize Triple Integral : } \( \iiint  \)\\
+    {\normalsize Upper/Lower Limit Location : }\\
+    % Inline mode
+    \[ \textstyle \int_0^\infty \]
+    \[ \textstyle \int \limits_0^\infty \]
+    % Display mode
+    \[ \displaystyle \int_0^\infty \]
+    \[ \displaystyle \int \limits_0^\infty \]
+
+    {\Large Spacing command}
+    % type1 space
+    \[ \iiiint f(x,y,z) dx dy dz \]
+    % type2 \,
+    \[ \iiiint f(x,y,z) \, dx \, dy \, dz \]
+    % type3 \:
+    \[ \iiiint f(x,y,z) \: dx \: dy \: dz \]
+    % type4 \;
+    \[ \iiiint f(x,y,z) \; dx \; dy \; dz \]
+    % type5 \quad
+    \[ \iiiint f(x,y,z) \quad dx \quad dy \quad dz \]
+
+    % Some time in order to distinguish the operator and variable
+    % we use \mathrm to modify derivative operator
+    \[ \int f(x) \, \mathrm{d}x \]
+    \[ \int f(x) \, dx \]
+
+    % integral equation with limits
+    \[ \displaystyle \int_a^b f(x) \, dx = F(x) \bigg\vert_a^b \]
+    \[ \textstyle \int_a^b f(x) \, dx = F(x) \bigg\vert_a^b \]
+
+
+    \newpage
+
+
+    {\Large Derivative}\\
+    \[ \frac{ \mathrm{d}f }{ \mathrm{d}x } \]
+    \[ \frac{\partial f}{\partial x} \]
+    {\normalsize Prime (Lagrangian) Notation}
+    \[ f'(x) \]
+    \[ f''(x) \]
+    \[ f'''(x) \]
+    \[ f^{(n)}(x) \]
+    {\normalsize Dot (Newtonian) Notation}
+    \[ \dot{x}(t) \]
+    \[ \ddot{x}(t) \]
+    \[ \dddot{x}(t) \]
+    \[ \ddddot{x}(t) \]
+
+    {\Large Vectors}
+    % the value of vector should be enclosed by \langle and \rangle
+    % use bm package
+    \[ \bm{r}(t) = \langle x(t),y(t),z(t) \rangle \]
+    % use esvect package
+    \[ \vv{v_1}(t) = \langle x(t),y(t),z(t) \rangle \]
+    \[ \vv*{v_1}(t) = \langle x(t),y(t),z(t) \rangle \]
+
+    % example
+    \[ \vv{\nabla} \times \vv{E} = - \frac{\partial \vv{B}}{\partial t} \]
+    \[ \oint \vv{E} \cdot d\vv{s} = \dfrac{d\Phi_B}{dt} \]
+
+
+\end{document}
