@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage{geometry,graphicx,amssymb,amsmath}
+\usepackage{centernot} % make not notation always in center of the symbol
+\usepackage{tensor} % to present complicated notation
+
+
+\author{YL-TING}
+\title{Learning LaTeX - Day4}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \newpage
+
+    {\Large Radicals}
+    \[ \sqrt{x} \quad \sqrt{\frac{x}{y}} \quad \sqrt{a+b+c+d+e} \]
+    \[ \sqrt[3]{x} \quad \sqrt[n]{a+b+c} \]
+
+    {\Large The Quadratic Formula}\\
+    If \( ax^2+bx+c = 0 \) then 
+    \( \displaystyle x = \frac{-b \pm \sqrt{b^2 -4ac}}{2a} \)
+    % plus or minus is \pm , minus or plus is \mp
+
+    {\Large Set Theory}
+    % two notation of set
+    \[ \{ x \in S \mid P(x) \} \] 
+    \[ \{ x \in S : P(x) \} \]
+    % set relationship
+    \[ A \subset B \]
+    \[ A \subseteq B \]
+    \[ A \supset B \]
+    \[ A \supseteq B \]
+    \[ A \subsetneq B \]
+    \[ A \supsetneq B \]
+    % Unions and Intersections
+    \[ A \cup B \]
+    \[ A \cap B \]
+    \[ \bigcup_{n=1}^{\infty} A_n \]
+    \[ \bigcap_{n=1}^{\infty} A_n \]
+    % set difference
+    \[ A \setminus B \]
+    \[ A - B \]
+    % empty set
+    \[ \emptyset \]
+    \[ \varnothing \]
+
+    \newpage
+
+    {\Large Logic}
+    % logic operator
+    \[ P \land Q \]
+    \[ P \lor Q \]
+    \[ P \lnot Q \]
+    % implications
+    \[ P \implies Q \]
+    \[ P \impliedby Q \]
+    \[ P \iff Q \]
+    % quantifier
+    \[ \forall s \in S \]
+    \[ \exists s \in S \]
+    % therefore
+    \[ \text{Therefore: } \therefore \]
+
+    {\Large Proper Use of Dots}
+    % center dot(\cdots) used primarily with mathematical operations
+    % low dot(\ldots) used primarily with lists,for example the coefficients of the variable
+    % example
+    \[ \int \int \cdots \int f(x_1,x_2, \ldots ,x_n) dx_1 dx_2 \cdots dx_n \]
+
+    {\Large Numerical Relationship}
+    \[ a = b \quad a > b \quad a < b \] % same as the symbol on keyborad
+    \[ a \neq b \quad a \ngtr b \quad a \nless b \]
+    \[a \geq b \quad a \ngeq b \]
+    \[a \leq b \quad a \nleq b \]
+    \[a \approx b\]
+    \[a \sim b \]
+
+    {\Large Negations}
+    % default,sometime get wrong
+    \[a \not \approx b\]
+    \[P \not \implies Q\]
+    % use centernot package can fix
+    \[a \centernot \approx b\]
+    \[P \centernot \implies Q\]
+
+    {\Large Number Theory}
+    \[a \equiv b \mod{m}\]
+    \[a \equiv b \pmod{m}\]
+    % sometime we will use the special calligraphic font called fraktur
+    % use \mathfrak{} to present
+    \[ \mathfrak{p} \mathfrak{P} \]
+
+    \newpage
+
+    {\Large Combinatorics}
+    % old method
+    \[ n \choose k \]
+    % newer method ,code logic is close to other function, better than old method
+    \[ \binom{n}{k} \]
+    % multinomial coefficients
+    \[ \binom{n}{k_1,k_2,\ldots,k_m} \]
+    % combination and permutation have a lot of notation,one is like this
+    % its not default method to LaTeX
+    \[ {}_n C_k \quad {}_n P_k \]
+    % use tensor package can present it in one function
+    \[ \tensor[_n]{C}{_k} \quad \tensor[_n]{P}{_k} \]
+    
+
+    {\Large Abstract Algebra}
+    % pair of $$ is math mode that use inline
+    % two line notation of permutation
+    $$\sigma = 
+    \begin{pmatrix}
+        1 & 2 & 3\\
+        2 & 3 & 1
+    \end{pmatrix} $$
+    % some symbol use in Abstract Algebra
+    % signum (symbol: \alpha)
+    \[ \operatorname{sgn}(\alpha)\]
+    % kernel (symbol: \phi)
+    \[ \ker(\phi) \]
+    % cokernel (symbol: \phi)
+    \[ \operatorname{coker}(\phi) \]
+    % normal subgroup
+    \[ H \triangleleft G \]
+    \[ H \trianglelefteq G \]
+    \[ H \unlhd G \]
+    \[ H \vartriangleleft G \]
+
+    {\Large Calligraphic Math Fonts}
+    \[ \mathcal{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} \]
+    % \mathcal no lowercase letter
+    \[ \mathcal{a b c d e f g h i j k l m n o p q r s t u v w x y z} \]
+    \[ \mathfrak{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} \]
+    \[ \mathfrak{a b c d e f g h i j k l m n o p q r s t u v w x y z} \]
+    \[ 1\text{(one)} \; l\text{(letter l)} \; \ell\text{(script l)}\]
+
+    {\Large Overset and Underset}
+    % use to stack multiple symbol together
+    % \overset{upper}{normal}
+    \[ a \overset{?}{=} b \]
+    % \underset{lower}{normal}
+    \[ f(x) \underset{x \to \infty}{\longrightarrow} 0 \]
+    % combine use
+    \[ f(x) \overset{?}{ \underset{x \to \infty}{\longrightarrow} } 0 \]
+
+
+    % Resources for Symbols
+    % http://detexify.kirelabs.org/classify.html
+    % http;//mirrors.rit.edu/CTAN/info/symbols/comprehensive/symbols-a4.pdf
+\end{document}
