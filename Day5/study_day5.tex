@@ -1,0 +1,189 @@
+\documentclass{article}
+% can use option to define paper size
+% avaliable option : a4paper, a5paper, b5paper, letterpaper, legalpaper, executivepaper
+% a4 : 297mm*210mm or 11.69in*8.27in
+% letterpaper : 279.4mm*215.9mm or 11in*8.5in
+
+
+\usepackage{graphicx,amssymb,amsmath}
+
+\usepackage{geometry}
+% use geometry can define more kind of papersize
+% avaliable option : [a-c][1-6]paper, b[0-6]j, ansi[a-e]paper, letterpaper, legalpaper, executivepaper, screen
+% can also use paperwidth and paperheight in option to define custom paper size
+% set margin of document : can use margin=value in option to define all margin
+% or use top,bottom,left,right for each,sepreate by camma(,)
+% if we hope the document is landscape layout can use landscape in option(for entire document)
+
+\usepackage{pdflscape}
+% this package can let one or more page use landscape layout by
+% \begin{landscape} ... \end{landscape}
+
+\usepackage{fancyhdr}
+% can make layout fancy
+\usepackage{lastpage}
+% can display the last page number of document
+\usepackage{enumitem}
+% can order the number icon when use enumerate
+
+
+\usepackage{amsthm} % can typesetting and auto-numbered theorem
+% have 3 default theorem styles : plain, definition and remark , use \theoremstyle{} to setup
+% \newtheorem{environmentname}{class(ex:Theorem,formula...)}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+% each \newtheorem will have independent counter
+\theoremstyle{definition}
+\newtheorem{lem}{Lemma}
+% if want share counter can add [environmentname] after {environmentname}
+\theoremstyle{remark}
+\newtheorem{prop}[thm]{Proposition}
+% if don't need counter ,use \newtheorem*{}{}
+\newtheorem*{for}{Formula}
+
+
+
+
+% below command can use in preamble and document part
+% User-Define Commands
+% \newcommand{\commandname}{definition} can define a new command for user
+% if the commandname is already exist,use \renewcommand{\commandname}{definition} to define
+
+% User-Define Function
+% can use \newcommand{\myoperator}{\operatorname{myoperator}} or \DeclareMathOperator{\myoperator}{myoperator}
+% Notice : if cammand name have * will have different text layout(above and below)
+% example
+\newcommand{\FunNS}{\operatorname{FunNS}} % equal to \DeclareMathOperator{\FunNS}{FunNS}
+
+\newcommand{\FunS}{\operatorname*{FunS}} % equal to \DeclareMathOperator*{\FunS}{FunS}
+
+
+% User-Define Environment
+% \newenvironment{name}{begin_code}{end_code}
+% example
+\newenvironment{mythm}{\noindent \textbf{Theorem.} \begin{itshape}}{\end{itshape}}
+
+\author{YL-TING}
+\title{Learning LaTeX - Day5}
+\date{\today}
+\begin{document}
+    \maketitle
+    \newpage
+
+    \begin{landscape}
+        {\Large this is landscape layout}
+    \end{landscape}
+
+    \newpage
+    use fancyhdr package 
+    \pagestyle{fancy}
+    \fancyhead[L]{Top Left}
+    \fancyhead[C]{Top Center}
+    \fancyhead[R]{Top Right}
+
+    \fancyfoot[L]{Bottom Left}
+    \fancyfoot[C]{Bottom Center}
+    \fancyfoot[R]{Bottom Right}
+
+    % \thepage can print current page number
+    % if want display the lastpage,use lastpage package
+    % the "\ " can let latex compiler know there has a space
+    \fancyfoot[C]{Page \thepage \ of \pageref{LastPage}}
+
+    % difference between \pagebreak and \newpage
+    % \pagebreak will stretch out the vertical spacing so that text fill the page("Soft" page break,can keep the flow and continuity of the text)
+    % \newpage will push all the space to the bottom("Hard" page break,create hard stop)
+    \newpage
+
+
+    % Notice : if cammand name have * will have different text layout(above and below)
+    % example
+    \[ \FunNS_a^b \]
+    \[ \FunS_a^b \]
+
+    % Basic LaTeX Environments
+    %   document : Sets up the basic document structure
+    %   center : Centers the text on the page
+    %   flushright : Right-justifies the text on the page
+    %   flushleft : Left-justifies the text on the page
+    %   tabular : A text table environment
+    %   array : A math table environment
+    %   align : A numbered math environment with alignment
+    %   align* : An unnumbered math environment with alignment
+    %   itemize : create unnumbered list
+    %   enumerate : create numbered list
+
+    % \[ <--> \begin{displaymath}   \] <--> \end{displaymath}
+    % \( <--> \begin{math}   \) <--> \end{math}
+
+    % can change item icon by []
+    \begin{itemize}
+        \item First Item
+        \item[$\rightarrow$] Second 
+        \begin{itemize}
+            \item[] First Sub-item
+            \item Second Sub-item
+        \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}
+        \item[] First Item
+        \item Second 
+        \begin{enumerate}
+            \item First Sub-item
+            \item[$\leftarrow$] Second Sub-item
+        \end{enumerate}
+    \end{enumerate}
+
+    % use enumitem package
+    \begin{enumerate}[label=\arabic*)]
+        \item First item
+        \item Second item
+    \end{enumerate}
+    \begin{enumerate}[label=\Roman*]
+        \item First item
+        \item Second item
+    \end{enumerate}
+    \begin{enumerate}[label=\roman*]
+        \item First item
+        \item Second item
+    \end{enumerate}
+    \begin{enumerate}[label=(\alph*)]
+        \item First item
+        \item Second item
+    \end{enumerate}
+
+    % use amsthm package
+    \begin{thm}
+        First Theorem Statement
+    \end{thm}
+    \begin{thm}
+        Second Theorem Statement
+    \end{thm}
+
+    \begin{lem}
+        First Lemma Statement
+    \end{lem}
+    \begin{prop}
+        First Proposition Statement
+    \end{prop}
+    \begin{for}[optional description]
+        First Foumula
+    \end{for}
+
+    % proof statement doesn't need define in preamble
+    % it will put a square box in the end of proof flush against the right
+    % if want to change symbol, should have to redefine the QED symbol command,it can fit at the end of the current line
+    \begin{proof}
+        This is proof statement
+    \end{proof}
+    \renewcommand{\qedsymbol}{Q.E.D.}
+    \begin{proof}
+        This is proof with QED
+    \end{proof}
+
+    % User-Define Envionment
+    \begin{mythm}
+        theorem statement
+    \end{mythm}
+\end{document}
