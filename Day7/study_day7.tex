@@ -1,0 +1,119 @@
+\documentclass{beamer}
+% beamer is a document class for making presentation slides(like PPT)
+% beamer automatically loads the amsthm environment so can use \newtheorem
+\newtheorem{thm}{Theorem}
+
+
+\beamertemplatenavigationsymbolsempty
+% the symbols in bottom right called navigation symbols
+% this command can make navigation symbols disappear
+
+\usetheme{Boadilla} % Themes are location names ,the first letter of themes name should use uppercase
+\usecolortheme{whale} % Color themes are animal names
+% below is the website that can view all theme and colortheme of latex
+% https://hartwork.org/beamer-theme-matrix/
+% https://deic-web.uab.cat/~iblanes/beamer_gallery/index.html
+
+\usepackage{geometry,graphicx,amsmath,amssymb}
+
+
+
+\author{YL-TING}
+\title{Learning LaTeX - Day7}
+\date{\today}
+\begin{document}
+    \section{sec1}
+    % In beamer ,use frame environment to present one or more pages of slides
+    \begin{frame}
+        \frametitle{Frame Title}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Some Math Stuff}
+        Here is some text followed by an equation.
+        \[ax^2+bx+c=0\]
+        \begin{itemize}
+            \item First 
+            \item Second
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Creating Columns}
+        % if need to make multiple columns of text can use columns environment
+        % each column will vertically center
+        This is the text above the columns
+        \vspace{5mm}
+
+        \begin{columns}
+            
+            \column{0.45\linewidth}
+            This is the First column
+
+            \column{0.45\linewidth}
+            This is the Second column
+
+        \end{columns}
+
+        \vspace{5mm}
+        This is the text below the columns
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Pausing Text}
+        Here is some more text
+        \pause
+        % this command will display everything the frame up to the command of one slide
+        % and then create a second slide immediately afterwards that has full contents(like PPT's animation)
+        Here is some more text
+    \end{frame}
+
+    % Specification Overlays
+    % Define the slides in the frame where the feature applies(like PPT's animation)
+    % for example:
+    %   <2> : slides 2 only
+    %   <1-4> : Slides 1 through 4,inclusive
+    %   <3-> : Slides 3 through the end
+    %   <1,3-4,6-> : Slides 1,3,4,6 and throu the end
+    \begin{frame}
+        \frametitle{Specification Overlays and Itemize}
+        \begin{itemize}
+            \item<1-> This appears on all frames.
+            \item<2-3> This appears on frames 2 and 3
+            \item<2> This appears on the second frame only.
+            \item<2,4> This appears on frames 2 and 4.
+        \end{itemize}
+    \end{frame}
+    \subsection{ssec1}
+    \begin{frame}
+        \frametitle{Specification Overlays and Text Styles}
+        This is \textbf<2>{bolded} text\\
+        This is \textit<2>{italiticized} text\\
+        This is \textcolor<2>{blue}{colorful} text\\
+        This is \uncover<2>{uncover} text\\
+        This is \only<2>{appearing} text with a double space\\
+        This is\only<2>{ appearing} text without a double space\\
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Blocks}
+
+        \begin{block}{Block Title}
+            This is a standard block
+        \end{block}
+
+        \begin{thm}[Theorem Name]
+            This is a theorem block
+        \end{thm}
+
+        \begin{proof}
+            This is a proof block
+        \end{proof}
+    \end{frame}
+    \subsection{ssec2}
+    \begin{frame}
+        % the option will highlight the current section/subsection and fade everything else 
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+\end{document}
