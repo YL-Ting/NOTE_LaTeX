@@ -1,0 +1,140 @@
+\documentclass{article}
+
+\usepackage{geometry,amsmath,amssymb,graphicx}
+
+\usepackage{tocloft} 
+% This pkg can make more custom setting for contents 
+
+\usepackage{hyperref}
+% use this package automatically turns the table of contents into hyperlinks
+% all use of \ref{} will also become hyperlinks
+% use \ref*{} to make references without hyperlinks
+
+\author{YL-TING}
+\title{Learning LaTeX - Day6}
+\date{\today}
+\begin{document}
+    \maketitle
+    \newpage
+
+    % "~"$text$ is called non-breaking Space,its can make text not isolated in newline
+
+    % latex will automatically put a larger a space after every period treating it like the end of a sentence
+    % if want a regular space,can put "\ " immediately after the period 
+
+    {\Large Hyphenation}\\
+    % can avoid the text overflow the document margin
+    {\Large He screamed aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\-aaaaaaaaaaaa with 20 'a's.}\\[15pt]
+
+    {\Large Horizontal and Vertical Space}\\
+    % \hspace{length} can create a horizontal space of the indicated size
+    % \vspace{length} can create a vertical space of the indicated size,usually use between two paragraph
+    % hspace example
+    Name : \underline{\hspace{6cm}}\\[15pt]
+
+    % vspace example
+    \begin{center}
+        \LARGE My Paper's Title
+    \end{center}
+    \vspace{1cm}
+    This is the start of my paper.There is a bigger gap between the title and text.\\[15pt]
+
+    {\Large Phantom Characters}\\[15pt]
+    % phantom characters are invisible text characters used to be align text
+    % example
+    \begin{tabular}{ll}
+        Saturday at 10 AM & Breakfast \\
+        \phantom{Saturday at} 1 PM & Lunch \\
+        Sunday at 8 AM & Breakfast \\
+        \phantom{Sunday at} 11 AM & Brunch 
+    \end{tabular}\\[15pt]
+
+    {\Large Small Caps Font}\\[15pt]
+    % \textsc{} create the uppercase text and font size equal to regular lowercase text
+    This is a mixture of REGULAR CAPS and \textsc{small caps} fonts\\[15pt]
+    
+    {\Large Boxes}\\[15pt]
+    % use \fbox{} in text mode and \boxed{} in math mode
+    A \fbox{theorem} is a proven mathmatical statement.\\
+    $\boxed{3+\boxed{2 \cdot 5}}$\\[15pt]
+
+    {\Large Line Fill and Dot Fill}\\[15pt]
+    % \hrulefill creates a solid line
+    % \dotfill creates a line od dots
+    Fill by line \hrulefill\\
+    Fill by dots \dotfill\\
+    % can use as a sperate line of paragraph
+    \noindent \hrulefill
+
+    \newpage
+
+    {\Large Creaing Lines}\\
+    % \rule{width(horizontal length)}{thickness(vertical length)}
+    \rule{\linewidth}{0.4pt}
+    \begin{center}
+        \rule{3cm}{0.5cm}
+    \end{center}
+
+    {\Large Import Images}\\
+    % use graphicx package
+    % support file type : JPEG,PNG,EPS,PDF
+    % define photo size directly and keep the width-height ratio
+    \includegraphics[width=6cm]{test_photo.png}\\
+    \includegraphics[height=6cm]{test_photo.png}\\
+    % ref to line width
+    \includegraphics[width=0.5\linewidth]{test_photo.png}\\
+    % ref to the original size of photo
+    \includegraphics[scale=1.5]{test_photo.png}\\
+    % the photo may distorted
+    \includegraphics[width=0.5cm,height=1cm]{test_photo.png}\\
+    
+    \newpage
+
+    {\Large Document Structure}
+    % the section,subsection and subsubsection has own counter and will create the header
+    \section[control section display in table of contents]{The First Section}
+    \subsection{The First Subsection}
+    \subsubsection{The First Subsubsection}
+    \subsubsection{The Second Subsubsection}
+    \subsection{The Second Subsubsection}
+    \section{The Second Subsubsection}
+
+    {\Large Table of Contents}\\
+    % this command will foemat the document and figure out how long ecah section is
+    % and then can go back and fill in the proper page number
+    \tableofcontents
+    % use [] can control what appears in the table of contents 
+
+
+    \vspace{1cm}
+    {\Large Labels and References}
+    % when document getting long ,we need ref some contents of section
+    % can use \label{reference_value} and \ref{reference_value}
+    % the \label{} is put on the section want to ref ,based on whatever counter is being used for the object
+    % the \ref{} will automatically insert the value associated with the label but only benerate the number of the reference
+    \section{The Section} \label{sec:MySec}
+    \subsection{The Subsection}\label{subsec:MySubsec}
+    \subsubsection{The Subsubsection}\label{ss1}
+    \subsubsection{The Subsubsection}\label{ss2}
+
+    % there is a excellent place to use non-breaking space ~ 
+    Section~\ref{sec:MySec}\\
+    Subsection~\ref{subsec:MySubsec}\\
+    Theorem\ref{ss1}\\
+
+    \newpage
+
+    {\Large Hyperlinks}\\[15pt]
+    % should use hyperref package
+    % use \hyperlink{label}{links text} for custom references
+    \hyperlink{ss2}{click to jump ss2}\\[10pt]
+    % to create internet hyperlinks : \href{URL}{text}
+    \href{http://google.com}{google site}\\
+
+
+    {\Large Using Multiple Files}
+    % use \input{} and \include{} to link to other document
+    % the \input{} just drops the contents of the file like copy and paste
+    % the \include{} also execute some code in background and start in new page
+    % have some limit : disable to have nested levels of include this
+\end{document}
